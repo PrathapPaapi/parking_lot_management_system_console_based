@@ -8,7 +8,7 @@ include GenerateInvoice
 module RemoveEntry
 
     def remove_entry_function(license_plate)
-        if !license_plate_valid(license_plate)
+        unless license_plate_valid(license_plate)
             puts "\n\n"
             puts "Enter a valid license plate".red
             return
@@ -37,17 +37,19 @@ module RemoveEntry
     end
 
     def remove_from_entry_array(license_plate)
-        ref_array = []
-        for entry in entries do
-            if entry.license_plate != license_plate
-                ref_array.push(entry)
-            end
-        end
+        # ref_array = []
+        # for entry in entries do
+        #     if entry.license_plate != license_plate
+        #         ref_array.push(entry)
+        #     end
+        # end
 
-        entries.clear
+        # entries.clear
 
-        for entry in ref_array do
-            entries.push(entry)
-        end
+        # for entry in ref_array do
+        #     entries.push(entry)
+        # end
+
+        entries.delete_if{ |entry| entry.license_plate}
     end
 end

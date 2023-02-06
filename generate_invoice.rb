@@ -21,26 +21,16 @@ module GenerateInvoice
     end
 
     def get_parking_charges(parked_duration)
-        parking_charges = 0
-
-        if parked_duration < 10
-            parking_charges = 100
-        end
-
-        if parked_duration >= 10 && parked_duration < 30
-            parking_charges = 200
-        end
-
-        if parked_duration >= 30 && parked_duration < 60
-            parking_charges = 300
-        end
-
-        if parked_duration >= 60
-            parking_charges = 400
-        end
-
-        parking_charges
-            
+        case parked_duration
+            when 0...10 
+                then 100
+            when 10...30
+                then 200
+            when 30...60
+                then 300
+            else
+                500
+        end        
     end
 
     def print_invoice(invoice)

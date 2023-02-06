@@ -14,7 +14,7 @@ class EntryDetails
             puts "No cars present in parking lot"
         end
 
-        for entry in entries do
+        entries.each do |entry|
             puts "\n"
             puts "License_plate  : #{entry.license_plate}"
             puts "Parking slot   : #{entry.parking_slot_identifier}"

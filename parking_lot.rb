@@ -53,5 +53,4 @@ class ParkingLot
     def print_all_invoices
         InvoiceDetails.all_invoices(invoices)
     end
-
 end

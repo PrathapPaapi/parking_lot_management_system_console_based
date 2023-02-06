@@ -16,13 +16,15 @@ module FindCarAndInvoice
     end
 
     def find_invoice(invoice_id)
-        required_entry = nil
-        for entry in invoices do
-            if entry.invoice_ID == invoice_id
-                required_entry = entry
-                break
-            end
-        end
-        required_entry
+        # required_entry = nil
+        # for entry in invoices do
+        #     if entry.invoice_ID == invoice_id
+        #         required_entry = entry
+        #         break
+        #     end
+        # end
+        # required_entry
+
+        invoices.find {|invoice| invoice.invoice_ID == invoice_id}
     end
 end

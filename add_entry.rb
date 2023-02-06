@@ -10,7 +10,7 @@ module AddEntry
 
     def add_entry_call_methods(license_plate)
 
-        if !license_plate_valid(license_plate)
+        unless license_plate_valid(license_plate)
             puts "\n\n"
             puts "Enter a valid license plate".red
             return
