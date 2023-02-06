@@ -32,5 +32,7 @@ module AddEntry
 
         puts "#{license_plate} - Car added to the entry"
 
+        new_entry
+
     end
 end

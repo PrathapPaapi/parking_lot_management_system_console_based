@@ -28,21 +28,21 @@ class ParkingLot
     def add_entry
         puts "\n\n"
         puts "Enter License Plate Number: "
-        license_plate = gets.chomp
+        license_plate = get_input
         add_entry_call_methods(license_plate)
     end
 
     def remove_entry
         puts "\n\n"
         puts "Enter License Plate Number: "
-        license_plate = gets.chomp
+        license_plate = get_input
         remove_entry_function(license_plate)
     end
 
     def find_required_car
         puts "\n\n"
         puts "Enter Invoice_ID: "
-        invoice_id = gets.chomp
+        invoice_id = get_input
         find_car_invoice(invoice_id)
     end
 
@@ -52,5 +52,9 @@ class ParkingLot
 
     def print_all_invoices
         InvoiceDetails.all_invoices(invoices)
+    end
+
+    def get_input
+        gets.chomp
     end
 end

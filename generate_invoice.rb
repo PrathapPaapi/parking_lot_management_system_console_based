@@ -50,6 +50,8 @@ module GenerateInvoice
         
 
         puts "Parking Charges : Rs. #{invoice.parking_charges}"
+
+        invoice.invoice_ID
     end
 
 end
