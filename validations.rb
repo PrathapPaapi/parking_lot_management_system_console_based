@@ -18,7 +18,7 @@ module Validations
         # end
         # duplicates_present
 
-        entries.find { |entry| entry.license_plate == license_plate }
+        entries.any? { |entry| entry.license_plate == license_plate }
     end
 
     def get_parking_slot
