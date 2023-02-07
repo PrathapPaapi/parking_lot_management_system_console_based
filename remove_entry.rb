@@ -50,6 +50,7 @@ module RemoveEntry
         #     entries.push(entry)
         # end
 
+        # It was difficult for me to figure out where this entries is comming from
         entries.delete_if{ |entry| entry.license_plate == license_plate }
     end
 end

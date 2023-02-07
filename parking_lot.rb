@@ -11,6 +11,7 @@ class ParkingLot
 
     attr_accessor :entries , :invoices, :invoice_constant, :invoice_id_reference
 
+    # Why not a constant?
     @@parking_lot_size = 10
 
     def self.parking_lot_size
@@ -51,6 +52,7 @@ class ParkingLot
     end
 
     def print_all_invoices
+        # Just for discussion, Why cannot the invoices be a class variable inside InvoiceDetails?
         InvoiceDetails.all_invoices(invoices)
     end
 

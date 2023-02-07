@@ -3,8 +3,10 @@ require 'colorize'
 
 include GenerateInvoice
 
+# Module name and file name do not match
+# If the module name is find car, why do we have a method to find Invoice?
 module FindCarAndInvoice
-    def find_car_invoice(invoice_id)  
+    def find_car_invoice(invoice_id)
         required_entry = find_invoice(invoice_id)
         if required_entry.nil?
             puts "\n\n"

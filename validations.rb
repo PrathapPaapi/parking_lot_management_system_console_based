@@ -1,6 +1,7 @@
 
 
 module Validations
+    # Can create dedicated Module for parking lot
     def parking_size_check
         entries.length >= ParkingLot.parking_lot_size
     end

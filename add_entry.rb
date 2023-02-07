@@ -16,6 +16,8 @@ module AddEntry
             return
         end
 
+        # Why is this called plates?
+        # Any better name?
         if duplicates_plates_check(license_plate)
             puts "\n\n"
             puts "License Plate exists in the record".blue

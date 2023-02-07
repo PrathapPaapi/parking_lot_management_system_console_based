@@ -1,4 +1,5 @@
 require_relative 'parking_lot.rb'
+# Can you create a Gemfile?
 require 'colorize'
 
 require 'pry'
@@ -14,11 +15,14 @@ PARKING_LOTS_HASH = Hash.new
 
 parking_flag = true
 
+# Fix Indentation
+# https://github.com/airbnb/ruby#indentation
 def create_parking_lot
     
     puts "\n Enter the parking lot name: \n"
     parking_lot_name = gets.chomp.to_s
 
+    # Any better name for the method
     if check_parking_lot_duplicates(parking_lot_name)
         puts "\nParking lot already exists.".red
         return
@@ -48,15 +52,24 @@ def open_parking_lot
 
     flag = true
 
-    while flag 
+    # while true
+    while flag
 
-        one = "Add entry of the Car."
+        # Is there a better way to store these values?
+        # Lets say tomorrow you need to add another entry, how many places would you need to change?
+
+        options = {
+            "1" => "Add entry of the Car."
+        }
+        one =
         two = "Remove entry of the Car."
         three = "Find the invoice"
         four = "List of all Cars in parking lot."
         five = "List of all invoices."
         six = "Exit."
+        seven = "Do not exit"
 
+        # Rename to a better name?
         if parking_lot.parking_size_check
             puts "\n\n"
             puts "Parking lot size limit reached: #{ParkingLot.parking_lot_size}".red
@@ -67,6 +80,9 @@ def open_parking_lot
 
         puts "\nChoose one of the following options(Enter the option number)"
 
+        options.each do |option_number, option_name|
+            puts "#{option_number}. #{option_name}"
+        end
         puts "\n 1. #{one} \n 2. #{two}  \n 3. #{three}  \n 4. #{four} \n 5. #{five}  \n 6. #{six} \n"
 
         puts "\n"
@@ -76,6 +92,7 @@ def open_parking_lot
         puts "\n"
 
         case
+        # Can we avoid doing equal check on each line?
         when option_selected == 1
             then puts "You have selected, #{one}."
                 parking_lot.add_entry
@@ -119,6 +136,7 @@ def remove_parking_lot
 
     temp_hash = Hash.new
 
+    # Any better way to do this? You have already done this in other places
     PARKING_LOTS_HASH.each do |key, value|
         unless key == parking_lot_name
             temp_hash.store(key, value)
@@ -190,7 +208,7 @@ while parking_flag
     when option_selected == 4
         then puts "You have selected, 'List all Parking Lots'."
             list_parking_lots
-    
+
     when option_selected == 5
         then puts "You have selected, 'Exit'."
              parking_flag = false
