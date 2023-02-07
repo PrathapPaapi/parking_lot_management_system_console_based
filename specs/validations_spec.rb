@@ -1,7 +1,7 @@
 require_relative "../parking_lot.rb"
 
 describe 'test_all' do
-    parking_lot = ParkingLot.new
+    let(:parking_lot) { ParkingLot.new }
 
     describe "validations verification" do
 
