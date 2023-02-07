@@ -13,10 +13,6 @@ puts "\n*****************************************************"
 
 PARKING_LOTS_HASH = Hash.new
 
-parking_flag = true
-
-# Fix Indentation
-# https://github.com/airbnb/ruby#indentation
 def create_parking_lot
     
     puts "\n Enter the parking lot name: \n"
@@ -50,24 +46,12 @@ def open_parking_lot
         end
     end
 
-    flag = true
+    while true 
 
-    # while true
-    while flag
-
-        # Is there a better way to store these values?
-        # Lets say tomorrow you need to add another entry, how many places would you need to change?
-
-        options = {
-            "1" => "Add entry of the Car."
-        }
-        one =
-        two = "Remove entry of the Car."
-        three = "Find the invoice"
-        four = "List of all Cars in parking lot."
-        five = "List of all invoices."
-        six = "Exit."
-        seven = "Do not exit"
+        parking_lot_options = { 1 => "Add entry of the Car.", 2 => "Remove entry of the Car.", 
+                    3 => "Find the invoice", 4 => "List of all Cars in parking lot.", 
+                    5 => "List of all invoices.", 6 => "Exit."
+                  }
 
         # Rename to a better name?
         if parking_lot.parking_size_check
@@ -80,10 +64,9 @@ def open_parking_lot
 
         puts "\nChoose one of the following options(Enter the option number)"
 
-        options.each do |option_number, option_name|
-            puts "#{option_number}. #{option_name}"
+        parking_lot_options.each do |opt, description|
+            puts "\n #{opt}. #{description}"
         end
-        puts "\n 1. #{one} \n 2. #{two}  \n 3. #{three}  \n 4. #{four} \n 5. #{five}  \n 6. #{six} \n"
 
         puts "\n"
 
@@ -91,35 +74,27 @@ def open_parking_lot
 
         puts "\n"
 
-        case
-        # Can we avoid doing equal check on each line?
-        when option_selected == 1
-            then puts "You have selected, #{one}."
+        case option_selected
+        when 1
+            then puts "You have selected, '#{parking_lot_options[1]}'."
                 parking_lot.add_entry
-
-        when option_selected == 2
-            then puts "You have selected, '#{two}'."
+        when 2
+            then puts "You have selected, '#{parking_lot_options[2]}'."
                 parking_lot.remove_entry
-
-        when option_selected == 3
-            then puts "You have selected, '#{three}'."
+        when 3
+            then puts "You have selected, '#{parking_lot_options[3]}'."
                 parking_lot.find_required_car
-
-        when option_selected == 4
-            then puts "You have selected, '#{four}'."
+        when 4
+            then puts "You have selected, '#{parking_lot_options[4]}'."
                 parking_lot.print_all_cars
-
-        when option_selected == 5
-            then puts "You have selected, '#{five}'."
+        when 5
+            then puts "You have selected, '#{parking_lot_options[5]}'."
                 parking_lot.print_all_invoices
-
-        when option_selected == 6
-            then flag = false
-                puts "You have selected, '#{six}'."
-
+        when 6
+            then puts "You have selected, '#{parking_lot_options[6]}'."
+                break
         else
             puts "Please enter a valid option."
-
         end
     end
 
@@ -134,25 +109,17 @@ def remove_parking_lot
         return
     end
 
-    temp_hash = Hash.new
-
-    # Any better way to do this? You have already done this in other places
-    PARKING_LOTS_HASH.each do |key, value|
-        unless key == parking_lot_name
-            temp_hash.store(key, value)
-        end
-    end
-
-    PARKING_LOTS_HASH.clear()
-
-    temp_hash.each do |key, value|
-        PARKING_LOTS_HASH.store(key, value)
-    end
+    PARKING_LOTS_HASH.delete_if { |key, value| key == parking_lot_name }
 
     puts "\n #{parking_lot_name} Parking Lot removed successfully.\n"
 end
 
 def list_parking_lots
+
+    if PARKING_LOTS_HASH.size == 0
+        puts "\n No parking lots found."
+        return
+    end
 
     puts "\nList of all parking lots: \n"
     PARKING_LOTS_HASH.each do |key, value|
@@ -172,50 +139,43 @@ def check_parking_lot_duplicates(parking_lot_name)
     flag
 end
 
-while parking_flag
+while true
 
     puts "\nChoose one of the following options(Enter the option number)"
 
-    puts "\n 1. Create a Parking Lot"
+    options = { 1 => "Create a Parking Lot.", 2 => "Open the Parking Lot.", 
+        3 => "Remove a Parking Lot", 4 => "List all Parking Lots.", 
+        5 => "Exit."
+      }
+    
+      options.each do |key, value|
+        puts "\n #{key}. #{value}"
+      end
 
-    puts "\n 2. Open the Parking Lot"
-
-    puts "\n 3. Remove a Parking Lot"
-
-    puts "\n 4. List all Parking Lots"
-
-    puts "\n 5. Exit"
-
-    puts "\n"
+      puts "\n"
 
     option_selected = gets.to_i
 
     puts "\n"
 
-    case
-    when option_selected == 1
+    case option_selected
+    when 1
        then puts "You have selected, 'Create a Parking Lot'."
             create_parking_lot
-
-    when option_selected == 2
+    when 2
         then puts "You have selected, 'Open the Parking Lot'"
             open_parking_lot
-
-    when option_selected == 3
+    when 3
         then puts "You have selected, 'Remove a Parking Lot'."
             remove_parking_lot
-
-    when option_selected == 4
+    when 4
         then puts "You have selected, 'List all Parking Lots'."
-            list_parking_lots
-
-    when option_selected == 5
+            list_parking_lots   
+    when 5
         then puts "You have selected, 'Exit'."
-             parking_flag = false
-
+             exit
     else
         puts "Please enter a valid option."
-
     end
 end
 
