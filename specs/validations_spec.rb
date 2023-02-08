@@ -10,7 +10,7 @@ describe 'test_all' do
         end
 
         it "should demonstrate the working of license plate validation" do
-            expect(parking_lot.license_plate_valid("KA02KB0001")).to eq(true)
+            expect(parking_lot.is_a_valid_license_plate?("KA02KB0001")).to eq(true)
         end
 
         it "should demonstrate whether number plate is present or not" do
@@ -18,17 +18,17 @@ describe 'test_all' do
             entries = [entry]
             allow_any_instance_of(ParkingLot).to receive(:entries) {entries}
 
-            expect(parking_lot.duplicates_plates_check("KA02KB0001")).to eq(true)
+            expect(parking_lot.has_license_plate?("KA02KB0001")).to eq(true)
         end
 
         it "should demonstrate that get_parking_slot returns parking slot number" do
             expect(parking_lot.get_parking_slot).to eq(1)
         end
 
-        it "should demonstrate that check_license_plate returns entry if present or nil if not present" do
+        it "should demonstrate that get_entry_of_license_plate returns entry if present or nil if not present" do
             parking_lot.add_entry_call_methods("KA02KB0001")
             
-            expect(parking_lot.check_license_plate("KA02KB0001")).to eq(parking_lot.entries.first)
+            expect(parking_lot.get_entry_of_license_plate("KA02KB0001")).to eq(parking_lot.entries.first)
         end
     end
     
