@@ -7,8 +7,8 @@ describe "test_all" do
         before do
             parking_lot.add_entry_call_methods("KA02KB0001")
         end
-        it "demonstrates that is_a_valid_license_plate? function is being invoked in remove_entry_function function" do
-            expect(parking_lot).to receive(:is_a_valid_license_plate?).with("KA02KB0001")
+        it "demonstrates that valid_license_plate? function is being invoked in remove_entry_function function" do
+            expect(parking_lot).to receive(:valid_license_plate?).with("KA02KB0001")
 
             parking_lot.remove_entry_function("KA02KB0001")
         end

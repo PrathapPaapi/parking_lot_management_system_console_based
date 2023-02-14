@@ -1,16 +1,14 @@
-
-
 module ParkingLotValidations
     # Can create dedicated Module for parking lot
   def parking_size_check
     entries.length >= ParkingLot::PARKING_LOT_SIZE
   end
 
-  def is_a_valid_license_plate?(license_plate)
+  def valid_license_plate?(license_plate)
     (/\A[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{4}\z/.match?(license_plate))
   end
 
-  def has_license_plate?(license_plate)
+  def license_plate_present?(license_plate)
     entries.any? { |entry| entry.license_plate == license_plate }
   end
 

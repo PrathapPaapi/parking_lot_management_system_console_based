@@ -1,6 +1,4 @@
-require_relative './entry_details.rb'
 require_relative 'generate_invoice.rb'
-require 'colorize'
 
 include GenerateInvoice
 
@@ -31,8 +29,7 @@ class InvoiceDetails
 
   def self.all_invoices(invoices)
     if invoices.size==0
-      puts "\n\n"
-      puts "No invoices found".red
+      puts PRINT_STATEMENTS_HASH["no_invoices_found"]
     end
     
     invoices.each do |invoice|

@@ -29,10 +29,10 @@ describe "test_all" do
             expect(parking_lot.entries.size).to eq(0)
         end
 
-        it "should demonstrate that find_required_car function takes input and returns the required invoice if found" do
+        it "should demonstrate that find_required_invoice function takes input and returns the required invoice if found" do
             allow_any_instance_of(ParkingLot).to receive(:get_input) {"PL-0000"}
 
-            expect(parking_lot.find_required_car).to eq("PL-0000")
+            expect(parking_lot.find_required_invoice).to eq("PL-0000")
         end
     end
 

@@ -1,5 +1,3 @@
-require 'colorize'
-
 class EntryDetails
 
   attr_accessor :license_plate, 
@@ -18,8 +16,8 @@ class EntryDetails
 
   def self.all_cars_entry(entries)
     if entries.size==0
-      puts "\n\n"
-      puts "No cars present in parking lot"
+      puts PRINT_STATEMENTS_HASH["no_cars_present"]
+      return
     end
 
     entries.each do |entry|
