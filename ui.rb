@@ -23,7 +23,6 @@ def create_parking_lot
 
 	parking_lot = ParkingLot.new
 	PARKING_LOTS_HASH.store(parking_lot_name, parking_lot)
-	puts "\n #{parking_lot_name} Parking lot created successfully."
 	puts PRINT_STATEMENTS_HASH["lot_created"].call(parking_lot_name)
 end
 
@@ -111,7 +110,6 @@ def remove_parking_lot
 
 	PARKING_LOTS_HASH.delete_if { |key, value| key == parking_lot_name }
 
-	puts "\n #{parking_lot_name} Parking Lot removed successfully.\n"
 	puts PRINT_STATEMENTS_HASH["lot_removed"].call(parking_lot_name)
 end
 
