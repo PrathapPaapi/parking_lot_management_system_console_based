@@ -8,7 +8,7 @@ PRINT_STATEMENTS_HASH = { "welcome" => "\n\n Welcome Admin" ,
                           "license_not_found" => "\n\n license plate not found",
                           "no_cars_present" => "\n\n No cars present in parking lot",
                           "invoice_not_found" => "\n\n Invoice ID not found",
-                          "select_format" => "\n\n Select the format of the file",
+                          "select_format" => "\n\n Enter the format of the file",
                           "no_invoices_found" => "\n\n No invoices found",
                           "parking_name" => "\n\n Enter the parking lot name: ",
                           "parking_exists" => "\n\n Parking lot already exists.",
@@ -18,7 +18,5 @@ PRINT_STATEMENTS_HASH = { "welcome" => "\n\n Welcome Admin" ,
                           "invalid_lot" => "\n\n nInvalid parking lot name.",
                           "invalid_lot" => "\n\n nInvalid parking lot name.",
                           "lot_removed" => Proc.new {|lot_name| "\n\n #{lot_name} - Parking Lot removed successfully."},
-                          "lots_not_found" => "\n\n No Parking lots found.",
+                          "lots_not_found" => "\n\n No Parking lots found."
                         }
-
-# puts PRINT_STATEMENTS_HASH["size_limit"].call(10)
